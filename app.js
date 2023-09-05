@@ -20,7 +20,7 @@ const flujoSoporte = addKeyword("2")
     })
    
 const flujoMarketing = addKeyword("3")
-    .addAnswer("- Manejo de Redes Sociales \n- Manual de Marca \n- Coberturas \n- Creación de Artes y Videos \n*Contactate con un asesor:* \nhttps://wa.link/xpn4ce")
+    .addAnswer("- Manejo de Redes Sociales \n- Manual de Marca \n- Coberturas \n- Creación de Artes y Videos \n*Contactate con un asesor:* \nhttps://wa.link/antisn")
     .addAnswer("*0* - Menú principal", {
         delay: 1500
     })

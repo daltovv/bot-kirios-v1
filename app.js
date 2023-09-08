@@ -47,11 +47,7 @@ const FlujoCont = addKeyword("5")
 const flujoSalir = addKeyword("7")
     .addAnswer("Gracias por contactarte con *Kiri*, Recuerda que estamos para servirte. *¡Hasta pronto!* 👋",
     null, async(ctx, {endFlow}) =>{
-        setTimeout(() => {
-            console.log("Cerrando el chatbot automáticamente...")
-            process.exit(0)
-        }, 1 * 60 * 1000)
-        return endFlow({ body: "el bot se cerrara en 1 min.... 👋"})
+        return endFlow({ body: "*¡Hasta pronto!* 👋"})
     })
 
 

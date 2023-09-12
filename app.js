@@ -50,19 +50,21 @@ const flujoSalir = addKeyword("7")
         return endFlow({ body: "*¡Hasta pronto!* 👋"})
     })
 
+const flujoSecundario = addKeyword("[^1-7]")
+    .addAnswer("Numero Invalido, ingrese un numero del *1* al *7*")
 
 const flujoCero = addKeyword("0")
     .addAnswer("*Menú Principal*\nSeleccione un número:\n\t*1* - Ventas 🛒\n\t*2* - Soporte Técnico ⚙️\n\t*3* - KinetBrand 🤩\n\t*4* - KinetPos 👨‍💻\n\t*5* - Contabilidad 📈 \n\t*6* - Nuestras Redes 📱 \n\t*7* - Salir 🫡")
 
 const flujoSaludo = addKeyword(EVENTS.WELCOME)
-    .addAnswer('\t*¡Bienvenid@ a KIRIOS!* 👋\n_Somos Soluciones_ 💡\nHola soy *Kiri*, el asistente virtual de Kirios 🤖 \nEn que puedo servirte:\n\t*1* - Ventas 🛒\n\t*2* - Soporte Técnico ⚙️\n\t*3* - KinetBrand 🤩\n\t*4* - KinetPos 👨‍💻\n\t*5* - Contabilidad 📈 \n\t*6* - Nuestras Redes 📱\n\t*7* - Salir 🫡', {
+    .addAnswer('\t*¡Bienvenid@ a KIRIOS!* 👋\n_Somos Soluciones_ 💡\nHola soy *Kiri*, el asistente virtual de Kirios 🤖 \nEn que puedo servirte:\n\t*1* - Ventas 🛒\n\t*2* - Soporte Técnico ⚙️\n\t*3* - KinetBrand 🤩\n\t*4* - KinetPos 👨‍💻\n\t*5* - Contabilidad 📈 \n\t*6* - Nuestras Redes 📱\n\t*7* - Salir 🫡 - https://wa.link/2dszol', {
     }, 
     null, 
-    [flujoVentas, flujoKinet, flujoSoporte, flujoMarketing, flujoRedes, flujoSalir, FlujoCont, flujoCero])
-       
+    [flujoVentas, flujoKinet, flujoSoporte, flujoMarketing, flujoRedes, flujoSalir, FlujoCont, flujoCero, flujoSecundario])
+  
 const main = async () => {
     const adapterDB = new MockAdapter()
-    const adapterFlow = createFlow([flujoSaludo, flujoCero, flujoVentas, flujoKinet, flujoSoporte, flujoMarketing, flujoRedes, flujoSalir, FlujoCont])
+    const adapterFlow = createFlow([flujoSaludo])
     const adapterProvider = createProvider(BaileysProvider)
 
     createBot({
@@ -74,9 +76,14 @@ const main = async () => {
     QRPortalWeb()
 
     setTimeout(() => {
-        console.log("Cerrando el chatbot automáticamente...");
-        process.exit(0)
+        addAnswer("Cerrando el chatbot automáticamente...")
+        process.endFlow(0)
     }, 10 * 60 * 1000)
+  
+
+}
+
+main()
   
     
 }
